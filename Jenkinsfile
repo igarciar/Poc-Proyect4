@@ -21,6 +21,11 @@ test["b"] = {
         }
     }
 }
+test["maven"] = {
+    stage ("maven1") {
+        sh "mvn clean install"
+    }
+}
 node {
    //stage 'start'
     stage ('download Code') {
@@ -29,11 +34,7 @@ node {
    parallel test
      stage ('middle') {
        sh "echo middle"
-   }
-    stage ('maven') {
-       withMaven(jdk: 'jdk8', maven: 'maven 3.2.2') {
-    sh "mvn clean install"
-}
+   
    }
    
 }
