@@ -23,7 +23,9 @@ test["b"] = {
 }
 test["maven"] = {
     stage ("maven1") {
-        sh "mvn clean install"
+        withMaven(jdk: 'jdk8', maven: 'maven 3.2.2') {		
+            sh "mvn clean install"		
+        }
     }
 }
 node {
