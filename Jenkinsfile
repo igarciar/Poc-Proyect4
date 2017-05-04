@@ -23,8 +23,11 @@ test["b"] = {
 }
 node {
    //stage 'start'
+    stage ('middle') {
+       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'AuthorInChangelog']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '4d6abab6-ea34-47ae-be6e-d5e2ffe50613', url: 'https://github.com/igarciar/Poc-Proyect4.git']]])
+   }
    parallel test
-   stage ('middle') {
+     stage ('middle') {
        sh "echo middle"
    }
    
