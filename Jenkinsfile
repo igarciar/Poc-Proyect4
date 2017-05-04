@@ -31,7 +31,9 @@ node {
        sh "echo middle"
    }
     stage ('maven') {
-       sh "echo middle"
+       withMaven(jdk: 'jdk8', maven: 'maven 3.2.2') {
+    sh "mvn clean install"
+}
    }
    
 }
